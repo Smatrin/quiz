@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  //var express = require('express');
  //var router = express.Router();
 
@@ -26,3 +27,14 @@ exports.question=function(req,res) {
 
    
 
+=======
+var express = require('express');
+var router = express.Router();
+
+/* GET home page. */
+router.get('/', function(req, res) {
+  res.render('index', { title: 'Quiz' });
+});
+
+module.exports = router;
+>>>>>>> c9e2a16d226cc7dcc028ceb3bcf7a18aa8a8dd81
