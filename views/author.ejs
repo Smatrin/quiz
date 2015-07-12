@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    
+</head>
+<body>
+  <div id="Galeria">
+    <h1><%= title %> </h1>
+
+         <p>Musica para trabajar..  </p>
+          <audio controls>
+            <source src= "images/armivan.mp3" type= "audio/mpeg" control>
+          </audio>
+   
+
+              <div id="galeria_principal">
+         
+              <img id="imgMostrar"src="images/Principal.jpg">
+        
+       </div>
+       <p>Algunas fotos ... </p>
+
+       <div id="galeria_miniaturas">
+           <img class="miniatura" src="images/yo.png" 
+           onclick="document.getElementById('imgMostrar').src='images/yo.png';">
+           <img class="miniatura" src="images/2.jpg" 
+           onclick="document.getElementById('imgMostrar').src='images/2.jpg';">
+           <img class="miniatura" src="images/3.jpg" 
+           onclick="document.getElementById('imgMostrar').src='images/3.jpg';">
+           <img class="miniatura" src="images/4.jpg" 
+           onclick="document.getElementById('imgMostrar').src='images/4.jpg';">
+           <img class="miniatura" src="images/5.jpg" 
+           onclick="document.getElementById('imgMostrar').src='images/5.jpg';">
+      </div>
+      <p>Comparto el video para que puedan apreciar el talento... </p>
+
+       
+       <div id="galeria_principala">
+          <video controls
+              <source  src="images/boliche.mp4" id="imgMostrar">
+          </audio>
+       </div>
+
+
+             
+
+  </div>
+    
+
+     <p> <a href="/">Inicio </a></p>
+</body>
+</html>
