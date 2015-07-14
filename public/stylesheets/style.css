@@ -12,22 +12,21 @@ border-radius: 25px;
 padding: 20px;
 padding-bottom: 0;
 background: #0099CC;
-width: 940px;
+width: 300 px;
 margin: center;
 }
 
 #imgMostrar {
 border: 1px solid #F2F2F2;
-border-radius: 25px;
-width: 540px;
-height: 300px;
+border-radius: 10px;
+width: 450px;
+height: 400px;
 margin: center;
 }
 
 #galeria_miniaturas{
 	display: table;
-    
-    margin: center;
+     margin: center;
 }
 
 .miniatura {
