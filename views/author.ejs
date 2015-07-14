@@ -17,7 +17,7 @@
 
               <div id="galeria_principal">
          
-              <img id="imgMostrar"src="images/Principal.jpg">
+              <img id="imgMostrar"src="images/Principal.jpg" class="img-thumbnail">
         
        </div>
        <p>Algunas fotos ... </p>
@@ -38,9 +38,10 @@
 
        
        <div id="galeria_principala">
-          <video controls
-              <source  src="images/boliche.mp4" id="imgMostrar">
-          </audio>
+           <object class="embed-responsive-item">
+          <video controls 
+              <source  src="images/boliche.mp4"   id="imgMostrar" class="flex-video widescreen" >
+          </audio> </object>
        </div>
 
 
@@ -49,6 +50,6 @@
   </div>
     
 
-     <p> <a href="/">Inicio </a></p>
+     <p> <a href="/"  class="btn btn-info" role="button">Inicio </a></p>
 </body>
 </html>
