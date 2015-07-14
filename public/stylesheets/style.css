@@ -19,13 +19,15 @@ margin: center;
 #imgMostrar {
 border: 1px solid #F2F2F2;
 border-radius: 25px;
-width: 940px;
-height: 600px;
+width: 540px;
+height: 300px;
+margin: center;
 }
 
 #galeria_miniaturas{
 	display: table;
-    margin: 0 auto;
+    
+    margin: center;
 }
 
 .miniatura {
