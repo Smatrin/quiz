@@ -5,13 +5,10 @@
   "scripts": {
     "start": "node ./bin/www"
   },
-
 "engines": {
 "node": "0.10.x",
 "npm": "1.4.x"
 },
-
-
 "DevDependencies": {
 "sqlite3": "^3.0.9"
 },
@@ -28,6 +25,7 @@
     "pg-hstore": "^2.3.2",
     "sequelize": "^1.7.0",
     "serve-favicon": "~2.1.3",
-    
-  }
+      }
 }
+
+
