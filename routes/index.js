@@ -1,20 +1,56 @@
+
+
+
+
+// Definición de rutas de /quizes
+//router.get('/quizes/question',quizController.question);
+//router.get('/quizes/answer',quizController.answer);
+
+
+
+
 var express = require('express');
 var router = express.Router();
 
 var quizController = require('../controllers/quiz_controller');
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Quiz' });
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Quiz', errors: []});
 });
 
-router.get('/author', function(req, res) {
-  res.render('author', { title: 'Galeria ' });
+/* Autoload de comandos con :quizId */
+router.param('quizId', quizController.load);
+
+/* GET quizes/ */
+router.get('/quizes', quizController.index);
+
+/* GET quizes/:id */
+router.get('/quizes/:quizId(\\d+)', quizController.show);
+
+/* GET quizes/:id/answer */
+router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
+
+/* GET author page. */
+router.get('/author', function(req, res, next) {
+  res.render('author', { title: 'Galeria', errors: []});
 });
 
 
-// Definición de rutas de /quizes
-router.get('/quizes/question',quizController.question);
-router.get('/quizes/answer',quizController.answer);
+
+/* GET quizes/new */
+router.get('/quizes/new', quizController.new);
+
+/* POST quizes/create */
+router.post('/quizes/create', quizController.create);
+
+/* GET quizes/:id/edit  */
+router.get('/quizes/:quizId(\\d+)/edit', quizController.edit);
+
+/* PUT quizes/:id  */
+router.put('/quizes/:quizId(\\d+)', quizController.update);
+
+/* DELETE quizes/:id  */
+router.delete('/quizes/:quizId(\\d+)', quizController.destroy);
 
 module.exports = router;

@@ -5,6 +5,8 @@ var path = require('path');
 //postgres DATABASE_URL=postgres://user:password@host:port/database
 //SQLite DATABASE_URL=sqlite://:@:/
 
+
+
 var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
 var DB_name = (url[6] || null);
 var user    = (url[2] || null);
@@ -15,36 +17,46 @@ var port    = (url[5] || null);
 var host    = (url[4] || null);
 var storage = process.env.DATABASE_STORAGE;
 
+// Cargamos el Modelo ORM
+var Sequelize = require('sequelize');
+
+// Usar BBDD SQLite o PostgreSQL:
+var sequelize = new Sequelize (DB_name, user, pwd,
+                  { dialect: dialect,
+                    protocol: protocol,
+                    port: port,
+                    host: host,
+                    storage: storage, // solo SQLite (.env)
+                    omitNull: true  // solo PostgreSQL
+                  }
+                );
+
+
+// Importar la definición de la tabla Quiz en quiz.js
+var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
+
+// Exportar definición de tabla Quiz:
+exports.Quiz = Quiz;
 
 
 
-var Sequelize = require('Sequelize');
-
-var sequelize= new Sequelize(DB_name,user,pwd,
-   { dialect:protocol,
-	  protocol:protocol,
-	  port:port,
-    host:host,
-    storage:storage,
-    omitnull:true
-    }
-);
-//importar la definicion de la tabla Quiz con quiz.js
-var quiz_path=path.join(__dirname,'quiz');
-var Quiz= sequelize.import(quiz_path);
-
-exports.Quiz=Quiz  //exportar definicion de la tabla Quiz
-
-
-//sequelize.sync() crea e inicializa la tabla de preguntas en db
-sequelize.sync().then(function(){ //success ejecuta el manejar una vez creada la tabla
-Quiz.count().then(function(count){
-if(count===0){ // la tabla se inicicializa solo si esta vacia
-Quiz.create({
-pregunta:'Capital de Italia',
-respuesta:'Roma'
-}).then(function(){
-console.log('Base de datos inicializada')
-})};
+// sequelize.sync() crea e inicializa tabla de preguntas en DB
+sequelize.sync().then(function(){
+  // then(..) ejecuta el manejador una vez creada la tabla
+  Quiz.count().then(function(count){
+    if (count === 0) { // La tabla se inicializa sólo si está vacía
+      Quiz.create({
+        pregunta: '¿Cuál es la capital de Italia?',
+        respuesta: 'Roma',
+        tema: 'geografia'
+      });
+      Quiz.create({
+          pregunta: '¿Cuál es la capital de Portugal?',
+          respuesta: 'Lisboa',
+          tema: 'geografia'
+        })
+      .then(function(){console.log('Base de Datos inicializada');})
+    };
+  });
 });
-});
+

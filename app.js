@@ -11,6 +11,23 @@ var routes = require('./routes/index');
 //var users = require('./routes/users');
 
 
+
+
+
+// var methodOverride = require('method-override');
+
+
+
+
+// Instalamos express-partials:
+
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.use(methodOverride('_method'));
+
+
+
 var app = express();
 
 // view engine setup
@@ -62,3 +79,13 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+
+
+
+
+
+
+
+
+
