@@ -22,7 +22,7 @@ var Sequelize = require('sequelize');
 
 // Usar BBDD SQLite o PostgreSQL:
 var sequelize = new Sequelize (DB_name, user, pwd,
-                  { dialect: dialect,
+                  { dialect: protocol,
                     protocol: protocol,
                     port: port,
                     host: host,
@@ -33,7 +33,12 @@ var sequelize = new Sequelize (DB_name, user, pwd,
 
 
 // Importar la definición de la tabla Quiz en quiz.js
-var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
+//var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
+
+var quiz_path = path.join(__dirname,'quiz');
+var Quiz = sequelize.import(quiz_path);
+
+
 
 // Exportar definición de tabla Quiz:
 exports.Quiz = Quiz;
@@ -59,4 +64,10 @@ sequelize.sync().then(function(){
     };
   });
 });
+
+
+
+
+
+
 
