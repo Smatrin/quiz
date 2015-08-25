@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html >
+    <head>
   <meta charset="utf-8">
     <title>Preguntas</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -15,18 +15,28 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
-    <!-- icono -->
 
-</head>
-<body>
-	<div class="container">	
-		<div class="jumbotron">
-			<h1>El juego de las preguntas</h1>
-		</div>	
-		<nav class="navbar navbar-default">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+     <div class="jumbotron">
+            <h1>El juego de las preguntas</h1>
+    </div>  
+   </head>
+  <body>
+    <div id="page-wrap">
+      <header class="main" id="h1">
+        <%if(!session.user){%>
+          <span class="right">
+           
+          </span>
+        <%}else{%>
+          <span class="right"><%=session.user.username%>
+            
+          </span>
+        <%}%>
+  
+      </header>
+      <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span href="/">Inicio</a></span>
@@ -36,28 +46,41 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-					<li><a href="/">Inicio</a>
+                    <li><a href="/">Inicio</a>
                     </li>
                     <li><a href="/quizes">Pregunta</a>
-                    </li>
-                     <li><a href="/quizes/new">Crear Pregunta</a>
-                    </li>
                     <li>
                     <a href="/author">Creditos</a>
                     </li>
                 </ul>
-            </div>			
-		</nav>
-		<section class="main" >
-        <%-body %>
-		</section>	
-		<footer class="main" id=1>
-			<hr>
-            <a href="https://github.com/Smatrin/quiz">Mi proyecto en git</a>
-        </footer>      
-    </div>		
-        
-	
-</body>
+                <ul class="nav navbar-nav navbar-right">
+                   <li> <a href="/login"class="glyphicon glyphicon-user">Login</a>
+                    <li>
+                    <a href="/logout"class="glyphicon glyphicon-log-in">Logout</a>
+                    </li>
 
+                 </ul>
+            </div>          
+        </nav>
+      <section class="main" id="s1">
+        <% if (errors.length) { %>
+          <span id='ErrorMsgs'>
+            Corregir errores:<br/>
+            <% for (var i in errors) { %>
+                <span> <%= errors[i].message %> </span></br>
+            <% } %>
+          </span>
+        <% } %>
+        <div><%- body %></div>
+      </section>
+
+
+        <footer class="main" id=1>
+        <hr>
+        <a href="http://es.wikipedia.org/wiki/Quiz">&eacute; Que es un Quiz?</a>
+        <span>||</span>
+        <a href="https://github.com/Smatrin/quiz">Mi proyecto en git</a>
+         </footer>
+    </div>
+  </body>
 </html>
